@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Timer Keeper Active</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .active {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .inactive {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    h2 {
+      margin-top: 0;
+      color: #333;
+      text-align: center;
+    }
+    .info {
+      font-size: 14px;
+      color: #666;
+      margin-top: 15px;
+    }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Timer Keeper Active</h2>
+  <div id="status" class="status">Checking status...</div>
+  <div class="info">
+    This extension keeps your timer active even when Chrome is in battery saver mode.
+    <br><br>
+    Active tabs will remain running at full performance.
+  </div>
+  <footer>
+    <small></small>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>

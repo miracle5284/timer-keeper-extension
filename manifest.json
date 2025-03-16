@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "Timer Keeper Active",
+  "version": "0.0.1",
+  "description": "Timer Keeper: A lightweight countdown timer that stays active even after browser refresh, so you never lose track of time.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "idle",
+    "cookies"
+  ],
+  "host_permissions": [
+        "https://dev-timer-app-slim.azurewebsites.net/*",
+        "https://staging-timer-app-slim.azurewebsites.net/*",
+        "https://timer.blueprime.app/*"
+  ],
+  "externally_connectable": {
+    "matches": [
+        "https://dev-timer-app-slim.azurewebsites.net/*",
+        "https://staging-timer-app-slim.azurewebsites.net/*",
+        "https://timer.blueprime.app/*",
+        "http://127.0.1:7985/*"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://dev-timer-app-slim.azurewebsites.net/*",
+        "https://staging-timer-app-slim.azurewebsites.net/*",
+        "https://timer.blueprime.app/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["images/test.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+} 
