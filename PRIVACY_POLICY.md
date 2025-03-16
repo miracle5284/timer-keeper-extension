@@ -1,10 +1,8 @@
-Below is a refined and professional policy document that aligns with the project's open-source nature, privacy, and security principles. This document is designed to be clear and comprehensive for end users, including those who may not be technically inclined.
-
 ---
 
 # 📜 Timer Keeper Active Extension – Policy Document
 
-_Last Updated: [Insert Date]_
+_Last Updated: March 10, 2025_
 
 ---
 
@@ -42,7 +40,7 @@ The extension requests the following permissions strictly for its functionality:
 | `"tabs"`                     | Interacts with active browser tabs to ensure only the timer website remains active.                         |
 | `"scripting"`                | Dynamically injects scripts to enhance performance on target (timer) websites.                              |
 | `"idle"`                     | Detects when the user is idle to manage timer activity accordingly.                                         |
-| `"cookies"`                  | Reads or modifies cookies for session-based interactions (e.g., to signal that the extension is installed). |
+| `"cookies"`                  | Reads or modifies cookies for session-based interactions (e.g., to signal that the extension is installed).   |
 
 **Note:**  
 These permissions are used exclusively for delivering the extension's core functionality and are not employed to collect or transmit user data.
@@ -101,7 +99,7 @@ If you discover any security vulnerabilities, please report them responsibly thr
 
 The official extension is available on the Chrome Web Store. Please install Timer Keeper Active only from the official listing:
 
-📌 [Chrome Web Store – Timer Keeper Active](https://chrome.google.com/webstore/detail/your-extension-id)
+📌 [Chrome Web Store – Timer Keeper Active](https://chrome.google.com/webstore/detail/jndhblddppbjacboankdagkmbnnmpbdf)
 
 ### 5.2 Self-Hosting & Forking
 
@@ -117,8 +115,8 @@ The official extension is available on the Chrome Web Store. Please install Time
 
 For questions, support, or contributions related to privacy, security, or development, please reach out via:
 
-- **Email:** [support@blueprime.app](mailto:support@yourwebsite.com)
-- **GitHub:** [https://github.com/miracle5284/](https://github.com/your-repo-link)
+- **Email:** [support@blueprime.app](mailto:support@blueprime.app)
+- **GitHub:** [https://github.com/miracle5284/](https://github.com/miracle5284/)
 
 ---
 
@@ -126,10 +124,6 @@ For questions, support, or contributions related to privacy, security, or develo
 
 Timer Keeper Active is committed to maintaining user privacy, security, and transparency while fostering an open and collaborative development environment. We continuously strive to improve the extension and its policies. Any significant changes to this document will be updated in the GitHub repository and communicated to the community.
 
----
-
 Thank you for choosing Timer Keeper Active. We are dedicated to ensuring your timer-based applications run reliably and securely, regardless of background browser optimizations.
 
 ---
-
-This document should provide a high-level, professional overview of the extension’s purpose, policies, and contribution guidelines, making it accessible to non-tech-savvy users while maintaining the formal tone expected in an open-source project.

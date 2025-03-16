@@ -32,7 +32,7 @@ Modern browsers implement aggressive resource management techniques that throttl
 ## Installation
 
 1. **Download and Installation:**  
-   The Timer Keeper Active Extension is available in the Chrome Web Store. Visit the [Chrome Web Store](https://chrome.google.com/webstore/detail/llkfgmkfhjlcpioadfmnejoggcbhonhf) and click “Add to Chrome” to install the extension.
+   The Timer Keeper Active Extension is available in the Chrome Web Store. Visit the [Chrome Web Store](https://chrome.google.com/webstore/detail/jndhblddppbjacboankdagkmbnnmpbdf) and click “Add to Chrome” to install the extension.
 
 2. **Enable the Extension:**  
    After installation, navigate to `chrome://extensions` and verify that Timer Keeper Active is enabled.
@@ -85,7 +85,7 @@ A: If the extension is disabled, its performance enhancements will not be applie
 
 ## Support and Contact
 
-For further assistance, inquiries, or feedback, please contact our support team at [blueprime91@gmail.com](mailto:blueprime91@gmail.com). Additional documentation, updates, and FAQs can be found on our [page](https://primeportfolio.azurewebsites.net).
+For further assistance, inquiries, or feedback, please contact our support team at [support@blueprime.app](mailto:suport@blueprime.app). Additional documentation, updates, and FAQs can be found on our [page](https://primeportfolio.azurewebsites.net).
 
 ---
 
