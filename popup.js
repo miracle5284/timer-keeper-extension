@@ -14,19 +14,22 @@ async function updateStatus() {
 
     // Define the list of available websites (domains) for timer pages.
     const availableWebsites = [
-        "https://dev-timer-app-slim.azurewebsites.net/*",
-        "https://staging-timer-app-slim.azurewebsites.net/*",
-        "https://timer.blueprime.app/*"
-      ];
+      "https://dev-timer-app-slim.azurewebsites.net/",
+      "https://staging-timer-app-slim.azurewebsites.net/",
+      "https://timer.blueprime.app/",
+      "https://chrona.blueprime.app/"
+    ];
 
-    // Check if the current tab URL belongs to one of the available websites.
-    const isTimerPage = availableWebsites.some(website => currentTab.url && currentTab.url.includes(website));
+    // Support PR environments like chrona-frontend-pr-45.azurewebsites.net
+    const isTimerPage = availableWebsites.some(site =>
+        currentTab.url && currentTab.url.startsWith(site)
+    ) || (currentTab.url && currentTab.url.startsWith("https://pr-") && currentTab.url.endsWith("chrona-frontend.azurewebsites.net/"));
 
     // Retrieve managed tabs from storage
     const { managedTabs = [] } = await chrome.storage.local.get("managedTabs");
 
-    if (managedTabs.includes(currentTab.id)) {
-      statusDiv.textContent = "Timer is being kept active ✓";
+    if (isTimerPage && managedTabs.includes(currentTab.id)) {
+      statusDiv.textContent = "Timer is being kept active";
       statusDiv.className = "status active";
     } else if (isTimerPage) {
       statusDiv.textContent = "Timer detected - Activating...";
@@ -39,6 +42,8 @@ async function updateStatus() {
     }
   } catch (error) {
     console.error("Error updating status:", error);
+    statusDiv.textContent = "Error loading status";
+    statusDiv.className = "status inactive";
   }
 }
 

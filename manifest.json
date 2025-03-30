@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Timer Keeper Active",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Timer Keeper: A lightweight countdown timer that stays active even after browser refresh, so you never lose track of time.",
   "permissions": [
     "storage",
@@ -11,16 +11,19 @@
     "cookies"
   ],
   "host_permissions": [
-        "https://dev-timer-app-slim.azurewebsites.net/*",
-        "https://staging-timer-app-slim.azurewebsites.net/*",
-        "https://timer.blueprime.app/*"
+    "https://dev-timer-app-slim.azurewebsites.net/*",
+    "https://staging-timer-app-slim.azurewebsites.net/*",
+    "https://timer.blueprime.app/*",
+    "https://chrona.blueprime.app/*",
+    "https://*.azurewebsites.net/*"
   ],
   "externally_connectable": {
     "matches": [
-        "https://dev-timer-app-slim.azurewebsites.net/*",
-        "https://staging-timer-app-slim.azurewebsites.net/*",
-        "https://timer.blueprime.app/*",
-        "http://127.0.1:7985/*"
+      "https://dev-timer-app-slim.azurewebsites.net/*",
+      "https://staging-timer-app-slim.azurewebsites.net/*",
+      "https://timer.blueprime.app/*",
+      "https://chrona.blueprime.app/*",
+      "https://*.azurewebsites.net/*"
     ]
   },
   "content_scripts": [
@@ -28,7 +31,9 @@
       "matches": [
         "https://dev-timer-app-slim.azurewebsites.net/*",
         "https://staging-timer-app-slim.azurewebsites.net/*",
-        "https://timer.blueprime.app/*"
+        "https://timer.blueprime.app/*",
+        "https://chrona.blueprime.app/*",
+        "https://*.azurewebsites.net/*"
       ],
       "js": ["content.js"]
     }

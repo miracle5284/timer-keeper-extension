@@ -1,8 +1,9 @@
 // Default settings
 const defaultTargetDomains = [
-    "https://timer.blueprime.app",
-    "https://dev-timer-app-slim.azurewebsites.net",
-    "https://staging-timer-app-slim.azurewebsites.net",
+  "https://timer.blueprime.app",
+  "https://dev-timer-app-slim.azurewebsites.net",
+  "https://staging-timer-app-slim.azurewebsites.net",
+  "https://chrona.blueprime.app"
 ];
 let targetDomains = [...defaultTargetDomains];
 let doNotDisturb = false;
@@ -23,7 +24,13 @@ chrome.storage.sync.get([
 function isTargetTab(url) {
   try {
     const tabOrigin = new URL(url).origin;
-    return targetDomains.includes(tabOrigin);
+
+    // Direct match
+    if (targetDomains.includes(tabOrigin)) return true;
+
+    // Match PR pattern like https://pr-123-chrona-frontend.azurewebsites.net
+    const host = new URL(url).hostname;
+    return host.startsWith("pr-") && host.endsWith("chrona-frontend.azurewebsites.net");
   } catch {
     return false;
   }
@@ -94,8 +101,8 @@ chrome.idle.onStateChanged.addListener((newState) => {
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === "sync") {
     Object.assign(
-      { doNotDisturb, enableHighPerformance, enableWakeLock, targetDomains },
-      changes
+        { doNotDisturb, enableHighPerformance, enableWakeLock, targetDomains },
+        changes
     );
   }
 });
@@ -113,7 +120,7 @@ chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => 
   }
 });
 
-// Set a cookie on install/startup
+// Set a cookie on install/startup (only for static domains)
 chrome.runtime.onInstalled.addListener(setExtensionCookie);
 chrome.runtime.onStartup.addListener(setExtensionCookie);
 
@@ -124,21 +131,39 @@ function setExtensionCookie() {
     version: chrome.runtime.getManifest().version,
     extensionId: chrome.runtime.id,
   };
-  targetDomains.forEach(domain => {
-    try {
-      chrome.cookies.set({ url: domain, name: "timer-keeper", value: JSON.stringify(details) });
-    } catch (error) {
-      console.error(`Failed to set cookie for ${domain}:`, error);
-    }
+
+  // Loop through existing tabs and set cookie per valid domain
+  chrome.tabs.query({}, (tabs) => {
+    tabs.forEach(tab => {
+      try {
+        if (isTargetTab(tab.url)) {
+          const origin = new URL(tab.url).origin;
+          chrome.cookies.set({
+            url: origin,
+            name: "timer-keeper",
+            value: JSON.stringify(details)
+          }, () => {
+            if (chrome.runtime.lastError) {
+              console.error(`Cookie set error for ${origin}:`, chrome.runtime.lastError.message);
+            }
+          });
+        }
+      } catch (err) {
+        console.error("Error setting cookie for tab:", err);
+      }
+    });
   });
 }
 
 // Inject content script into existing tabs
-chrome.tabs.query({ url: targetDomains.map(domain => `${domain}/*`) }, (tabs) => {
+chrome.tabs.query({}, (tabs) => {
   tabs.forEach(tab => {
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ['content.js']
-    }).catch(console.error);
+    if (isTargetTab(tab.url)) {
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['content.js']
+      }).catch(console.error);
+    }
   });
+  console.log("Extension started");
 });
