@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Timer Keeper Active",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Timer Keeper: A lightweight countdown timer that stays active even after browser refresh, so you never lose track of time.",
   "permissions": [
     "storage",

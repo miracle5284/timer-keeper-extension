@@ -17,6 +17,11 @@ Modern browsers implement aggressive resource management techniques that throttl
 - **Wake Lock Integration:**  
   When enabled, the extension requests a wake lock to keep the screen active, further enhancing the performance of your timer in power-saving scenarios.
 
+- **Go to Timer Page:**  
+  When not on a valid timer page, the extension popup displays a **"Go to Timer Page"** button.
+  - If another timer page is already open in the same browser window, clicking the button will switch to that tab automatically.
+  - If no timer page is open, clicking the button will open a new timer page to ensure quick access to Chrona.
+
 - **Configurable Options:**  
   Users have access to an intuitive options interface where they can:
   - Enable or disable high performance mode.
@@ -48,6 +53,12 @@ Modern browsers implement aggressive resource management techniques that throttl
 - **Cookie Management:**  
   At installation and startup, the extension sets a cookie on the target website containing metadata such as the extension’s name, version, and unique ID. This mechanism enables the website to detect that Timer Keeper Active is or was installed.
 
+- **Go to Timer Page Navigation:**  
+  The popup automatically detects when the user is not on a timer page.  
+  When clicked:
+  - If a timer page exists in the same window → it activates and focuses that tab.
+  - If no timer page is open → it opens a new tab with the Chrona timer page instantly.
+
 - **Dynamic Options:**  
   Through the options page, users can adjust the extension’s behavior. Changes are stored using Chrome’s `chrome.storage` API, and these settings are dynamically applied to maintain the desired performance level.
 
@@ -60,6 +71,9 @@ Once installed and enabled, Timer Keeper Active operates transparently in the ba
 - Activate or deactivate wake lock functionality.
 
 After modifying your settings, click “Save Options” to apply the changes immediately.
+
+Additionally, use the popup to quickly jump to your timer page:
+- If you're not on a timer page, click **"Go to Timer Page"** to access or open Chrona instantly.
 
 ## Troubleshooting
 
@@ -85,7 +99,7 @@ A: If the extension is disabled, its performance enhancements will not be applie
 
 ## Support and Contact
 
-For further assistance, inquiries, or feedback, please contact our support team at [support@blueprime.app](mailto:suport@blueprime.app). Additional documentation, updates, and FAQs can be found on our [page](https://primeportfolio.azurewebsites.net).
+For further assistance, inquiries, or feedback, please contact our support team at [support@blueprime.app](mailto:support@blueprime.app). Additional documentation, updates, and FAQs can be found on our [page](https://primeportfolio.azurewebsites.net).
 
 ---
 
